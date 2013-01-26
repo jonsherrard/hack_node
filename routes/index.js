@@ -29,6 +29,7 @@
       if (doc === null) {
         console.log('insert happening');
         return db.users.insert(user_object, function(err, user) {
+          console.log(user);
           return res.json(user._id);
         });
       } else {
