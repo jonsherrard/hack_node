@@ -39,10 +39,10 @@
     return team_assignment = function(user) {
       var user_type;
       user_type = user.user_type;
-      switch (false) {
-        case !'developer':
+      switch (user_type) {
+        case 'developer':
           return console.log('dev');
-        case !'other':
+        case 'other':
           return console.log('other dude');
       }
     };

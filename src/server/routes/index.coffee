@@ -29,7 +29,7 @@ exports.post_login = (req, res) ->
 
 	team_assignment = (user) =>
 		user_type = user.user_type
-		switch
+		switch user_type
 			when 'developer'
 				console.log 'dev'
 			when 'other'
