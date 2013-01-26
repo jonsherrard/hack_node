@@ -19,7 +19,7 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, request, team_assignment, user,
+    var insert_user, request, team_assignment,
       _this = this;
     request = req;
     insert_user = function(request) {
@@ -80,13 +80,7 @@
           return console.log('designer');
       }
     };
-    user = insert_user(req);
-    /*t = setTimeout( =>
-    		res.json user
-    	, 500)
-    */
-
-    return res.json('hello');
+    return res.json(insert_user(req));
   };
 
   exports.genevent = function(req, res) {
