@@ -57,7 +57,9 @@ exports.post_login = (req, res) ->
 				console.log 'designer'
 
 	user = insert_user(req)
-	res.json user
+	t = setTimeout( =>
+		res.json user
+	, 500)
 
 exports.genevent = (req, res) ->
 	event_object =
