@@ -19,22 +19,26 @@
   };
 
   exports.post_login = function(req, res) {
-    var search_object, user_object,
+    var search_object, team_assignment, user_object,
       _this = this;
     search_object = {
       username: req.body.username
     };
     user_object = req.body;
-    return db.users.findOne(search_object, function(err, doc) {
+    db.users.findOne(search_object, function(err, doc) {
       if (doc === null) {
         console.log('insert happening');
         return db.users.insert(user_object, function(err, user) {
+          team_assignment(user[0]);
           return res.json(user[0]._id);
         });
       } else {
         return res.json(doc._id);
       }
     });
+    return team_assignment = function(user) {
+      return console.log(user);
+    };
   };
 
   exports.get_fake_team = function(req, res) {

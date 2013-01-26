@@ -22,9 +22,13 @@ exports.post_login = (req, res) ->
 		if doc is null
 			console.log 'insert happening'
 			db.users.insert user_object, (err, user) =>
+				team_assignment user[0]
 				res.json user[0]._id
 		else
 			res.json doc._id
+
+	team_assignment = (user) =>
+		console.log user
 
 exports.get_fake_team = (req, res) ->
 	db.teams.findOne {name: "team1"}, (err, doc) =>
