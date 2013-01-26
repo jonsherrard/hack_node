@@ -56,12 +56,9 @@ exports.post_login = (req, res) ->
 				console.log 'designer'
 
 		user = insert_user(req)
-		setTimeout( =>
-			team_assignment(user)
-		, 500
-
-
-
+		t = setTimeout(=>
+ 			team_assignment(user)
+		, 500)
 
 exports.genevent = (req, res) ->
 	event_object =
@@ -70,13 +67,13 @@ exports.genevent = (req, res) ->
 		date: new Date()
 		teams_array: []
 	db.events.insert event_object, (err, doc) =>
-			if err 
-				throw err
-				res.json 'error!'
-			else
-				console.log 'event created'
-				console.log event_object
-				res.json event_object
+		if err 
+			throw err
+			res.json 'error!'
+		else
+			console.log 'event created'
+			console.log event_object
+			res.json event_object
 
 
 
