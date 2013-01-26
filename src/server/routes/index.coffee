@@ -27,7 +27,8 @@ exports.post_login = (req, res) ->
 			res.json doc._id
 
 exports.get_team = (req, res) ->
-	team_object =  db.teams.findOne()
+	team_object =  db.teams.findOne(), (err, doc) =>
+		return doc
 	res.json team_object
 
 exports.genevent = (req, res) ->
