@@ -37,10 +37,11 @@
       }
     });
     return team_assignment = function(user) {
-      var user_type;
+      var thing, user_type;
       user_type = user.type;
       if (user_type === 'developer') {
-        return console.log('dev');
+        thing = db.teams.count();
+        return console.log(thing);
       } else if (user_type === 'other') {
         return console.log('other dude');
       } else if (user_type === 'designer') {
