@@ -1,3 +1,3 @@
-# Social Date Picker
+# Google Hack Day Repo
 
-Currently residing at [Devular.com](http://devular.com)
+
