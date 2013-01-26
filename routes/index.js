@@ -35,25 +35,30 @@
     				else
     					res.json user
     		else
-    			res.json user 
-    
-    
-    exports.genevent = (req, res) ->
-    	event_object =
-    		location: 'Google Campus'
-    		title: 'GDG Design in Action'
-    		date: new Date()
-    		teams_array: []
-    	db.events.insert event_object, (err, doc) =>
-    		if err 
-    			throw err
-    			res.json 'error!'
-    		else
-    			console.log 'event created'
-    			console.log event_object
-    			res.json event_object
+    			res.json user
     */
 
+  };
+
+  exports.genevent = function(req, res) {
+    var event_object,
+      _this = this;
+    event_object = {
+      location: 'Google Campus',
+      title: 'GDG Design in Action',
+      date: new Date(),
+      teams_array: []
+    };
+    return db.events.insert(event_object, function(err, doc) {
+      if (err) {
+        throw err;
+        return res.json('error!');
+      } else {
+        console.log('event created');
+        console.log(event_object);
+        return res.json(event_object);
+      }
+    });
   };
 
 }).call(this);

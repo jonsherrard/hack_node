@@ -31,7 +31,7 @@ exports.post_login = (req, res) ->
 				else
 					res.json user
 		else
-			res.json user 
+			res.json user ###
 
 
 exports.genevent = (req, res) ->
@@ -47,7 +47,7 @@ exports.genevent = (req, res) ->
 		else
 			console.log 'event created'
 			console.log event_object
-			res.json event_object ###
+			res.json event_object
 
 
 
