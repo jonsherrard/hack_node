@@ -48,15 +48,15 @@
         return t = setTimeout(function() {
           var team_object;
           console.log(_this.num_teams);
-          if (_this.num_teams === 4) {
+          if (_this.num_teams === 5) {
             team_object = {
               member_array: {
                 member: user
               }
             };
-            return db.teams.insert(team_object, function(err, team) {
-              return console.log(team);
-            });
+            return db.teams.insert(team_object, function(err, team) {});
+          } else {
+            return db.find;
           }
         }, 500);
       } else if (user_type === 'other') {

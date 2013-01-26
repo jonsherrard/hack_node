@@ -36,12 +36,14 @@ exports.post_login = (req, res) ->
 				@num_teams = num
 			t = setTimeout(=>
 				console.log @num_teams
-				if @num_teams is 4
+				if @num_teams is 5
 					team_object =
 						member_array:
 							member: user
 					db.teams.insert team_object, (err, team) =>
-						console.log team
+				else
+					db.find
+
 			, 500)
 
 		else if user_type is 'other'
