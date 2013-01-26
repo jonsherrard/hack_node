@@ -16,4 +16,12 @@
     });
   };
 
+  exports.login = function(req, res) {
+    var test_object;
+    test_object = {
+      hello: 'world'
+    };
+    return res.json(test_object);
+  };
+
 }).call(this);

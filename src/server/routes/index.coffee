@@ -12,3 +12,9 @@ db.collection 'events'
 exports.index = (req, res) ->
   res.render "bootstrap",
       title: "Date Find"
+
+exports.login = (req, res) ->
+	test_object =
+		hello: 'world'
+
+	res.json test_object
