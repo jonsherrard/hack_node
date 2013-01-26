@@ -40,6 +40,8 @@ Module dependencies.
 
   app.get("/genevent", routes.genevent);
 
+  app.get('/get_team', routes.get_team);
+
   http.createServer(app).listen(app.get("port"), function() {
     return console.log("Express listening on port " + app.get("port"));
   });
