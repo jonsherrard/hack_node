@@ -22,7 +22,7 @@ exports.post_login = (req, res) ->
 	db.users.findOne search_object, (err, doc) =>
 		console.log doc
 		if err && throw err
-		else
+		else if doc is null
 			console.log 'insert happening'
 			db.users.insert user_object, (err, doc) =>
 				if err

@@ -44,11 +44,8 @@
           }
         });
       } else {
-        console.log('update happening');
-        return db.users.update({
-          username: user_object.username
-        }, {
-          $set: user_object
+        return res.json({
+          loggin_in: true
         });
       }
     });
