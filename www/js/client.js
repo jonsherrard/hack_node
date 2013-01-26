@@ -155,23 +155,6 @@
 
   })(View);
 
-  APP.v.Home = (function(_super) {
-
-    __extends(Home, _super);
-
-    function Home() {
-      this.initialize = __bind(this.initialize, this);      return Home.__super__.constructor.apply(this, arguments);
-    }
-
-    Home.prototype.initialize = function() {
-      this.template = 'home.html';
-      return this.screen_append();
-    };
-
-    return Home;
-
-  })(View);
-
   APP.v.App = (function(_super) {
 
     __extends(App, _super);
@@ -193,6 +176,23 @@
     };
 
     return App;
+
+  })(View);
+
+  APP.v.Home = (function(_super) {
+
+    __extends(Home, _super);
+
+    function Home() {
+      this.initialize = __bind(this.initialize, this);      return Home.__super__.constructor.apply(this, arguments);
+    }
+
+    Home.prototype.initialize = function() {
+      this.template = 'home.html';
+      return this.screen_append();
+    };
+
+    return Home;
 
   })(View);
 
