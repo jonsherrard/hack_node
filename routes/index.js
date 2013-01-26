@@ -38,7 +38,7 @@
     });
     return team_assignment = function(user) {
       var user_type;
-      user_type = user.user_type;
+      user_type = user.type;
       if (user_type === 'developer') {
         return console.log('dev');
       } else if (user_type === 'other') {
