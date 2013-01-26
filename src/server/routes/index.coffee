@@ -15,7 +15,7 @@ exports.index = (req, res) ->
      	title: "Team Jam"
 
 exports.post_login = (req, res) ->
-	res.send 'fuck'
+	res.json 'fuck'
 	###search_object =
 		username: req.body.username
 	user_object = req.body

@@ -19,7 +19,7 @@
   };
 
   exports.post_login = function(req, res) {
-    return res.send('fuck');
+    return res.json('fuck');
     /*search_object =
     		username: req.body.username
     	user_object = req.body
