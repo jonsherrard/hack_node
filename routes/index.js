@@ -49,18 +49,13 @@
           var team_object;
           console.log(_this.num_teams);
           if (_this.num_teams === 3) {
-            team_object = {};
+            team_object = {
+              member_array: {
+                member: user
+              }
+            };
             return db.teams.insert(team_object, function(err, team) {
-              console.log(team);
-              return db.teams.update({
-                _id: team._id
-              }, {
-                $push: {
-                  member_array: {
-                    member: user
-                  }
-                }
-              });
+              return console.log(team);
             });
           }
         }, 500);
