@@ -26,6 +26,10 @@ exports.post_login = (req, res) ->
 		else
 			res.json doc._id
 
+exports.get_team = (req, res) ->
+	team_object =  db.teams.findOne()
+	res.json team_object
+
 exports.genevent = (req, res) ->
 	event_object =
 		location: 'Google Campus'

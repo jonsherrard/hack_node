@@ -37,6 +37,12 @@
     });
   };
 
+  exports.get_team = function(req, res) {
+    var team_object;
+    team_object = db.teams.findOne();
+    return res.json(team_object);
+  };
+
   exports.genevent = function(req, res) {
     var event_object,
       _this = this;
