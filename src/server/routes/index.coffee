@@ -15,40 +15,16 @@ exports.index = (req, res) ->
      	title: "Team Jam"
 
 exports.post_login = (req, res) ->
-	request = req
-	insert_user = (request) =>
-		search_object =
-			username: request.body.username
-		user_object = request.body
-		db.users.findOne search_object, (err, doc) =>
-			if doc is null
-				console.log 'insert happening'
-				db.users.insert user_object
-			else return doc
-
-	team_assignment = (user) =>
-		console.log '------team team_assignment user'
-		console.log user
-		user_type = user.type
-		switch user_type
-			when 'developer'
-				num_teams = db.teams.count()
-				if num_teams = 0
-					team_object = {}
-					db.teams.insert team_object, (err, team) =>
-						if err & throw err
-						else
-							db.teams.update
-								_id: team._id
-							,
-								$push:
-									member_array: user_object
-			when 'designer'
-				console.log 'designer'
-			when 'other'
-				console.log 'designer'
-	
-	res.json insert_user(req)
+	search_object =
+		username: req.body.username
+	user_object = req.body
+	db.users.findOne search_object, (err, doc) =>
+		if doc is null
+			console.log 'insert happening'
+			db.users.insert user_object, (err, user) =>
+				res.json user._id
+		else
+			res.json doc._id
 
 exports.genevent = (req, res) ->
 	event_object =

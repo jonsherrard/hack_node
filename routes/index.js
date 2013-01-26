@@ -19,56 +19,22 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, request, team_assignment,
+    var search_object, user_object,
       _this = this;
-    request = req;
-    insert_user = function(request) {
-      var search_object, user_object;
-      search_object = {
-        username: request.body.username
-      };
-      user_object = request.body;
-      return db.users.findOne(search_object, function(err, doc) {
-        if (doc === null) {
-          console.log('insert happening');
-          return db.users.insert(user_object);
-        } else {
-          return doc;
-        }
-      });
+    search_object = {
+      username: req.body.username
     };
-    team_assignment = function(user) {
-      var num_teams, team_object, user_type;
-      console.log('------team team_assignment user');
-      console.log(user);
-      user_type = user.type;
-      switch (user_type) {
-        case 'developer':
-          num_teams = db.teams.count();
-          if (num_teams = 0) {
-            team_object = {};
-            return db.teams.insert(team_object, function(err, team) {
-              if (err & (function() {
-                throw err;
-              })()) {} else {
-                return db.teams.update({
-                  _id: team._id
-                }, {
-                  $push: {
-                    member_array: user_object
-                  }
-                });
-              }
-            });
-          }
-          break;
-        case 'designer':
-          return console.log('designer');
-        case 'other':
-          return console.log('designer');
+    user_object = req.body;
+    return db.users.findOne(search_object, function(err, doc) {
+      if (doc === null) {
+        console.log('insert happening');
+        return db.users.insert(user_object, function(err, user) {
+          return res.json(user._id);
+        });
+      } else {
+        return res.json(doc._id);
       }
-    };
-    return res.json(insert_user(req));
+    });
   };
 
   exports.genevent = function(req, res) {
