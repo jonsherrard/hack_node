@@ -37,7 +37,7 @@
       }
     });
     return team_assignment = function(user) {
-      return console.log(user);
+      return console.log(user.type);
     };
   };
 
