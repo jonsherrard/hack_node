@@ -15,6 +15,7 @@ exports.index = (req, res) ->
 
 exports.post_login = (req, res) ->
 
+	console.log req.body.username
 	user_object = req.body
 	
 	db.users.update 

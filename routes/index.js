@@ -18,6 +18,7 @@
 
   exports.post_login = function(req, res) {
     var user_object;
+    console.log(req.body.username);
     user_object = req.body;
     db.users.update({
       username: req.body.username
