@@ -17,6 +17,6 @@ exports.post_login = (req, res) ->
 
 	user_object = req.body
 	
-	db.users.insert user_object
+	db.users.update user_object, upsert: true
 
 	res.json user_object
