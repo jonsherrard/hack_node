@@ -22,6 +22,7 @@ exports.post_login = (req, res) ->
 	,	
 		$set:
 			user: user_object
-	, upsert: true
+	, 
+		upsert: true
 
 	res.json user_object
