@@ -33,7 +33,7 @@ exports.post_login = (req, res) ->
 			else
 				return user
 
-	user = insert_user()
+	user = insert_user(req)
 
 	team_assignment = (user)
 

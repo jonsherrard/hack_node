@@ -48,7 +48,7 @@
         }
       });
     };
-    user = insert_user();
+    user = insert_user(req);
     team_assignment = user;
     user_type = user.type;
     switch (user_type) {
