@@ -25,6 +25,7 @@
     };
     user_object = req.body;
     db.users.findOne(search_object, function(err, doc) {
+      console.log(doc);
       if (err && (function() {
         throw err;
       })()) {} else if (doc === void 0) {
