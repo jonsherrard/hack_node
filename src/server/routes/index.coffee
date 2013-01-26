@@ -22,7 +22,7 @@ exports.post_login = (req, res) ->
 	db.users.findOne search_object, (err, doc) =>
 		console.log doc
 		if err && throw err
-		else if doc is null
+		else
 			console.log 'insert happening'
 			db.users.insert user_object, (err, doc) =>
 				if err
@@ -32,11 +32,6 @@ exports.post_login = (req, res) ->
 					'logged in'
 					res.json(logged_in: true)
 		else
-			console.log 'update happening'
-			db.users.update
-				username:  user_object.username
-			,
-				$set:
-					user_object
+			res.json(loggin_in: true)
 
 	res.json user_object
