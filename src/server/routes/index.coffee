@@ -16,9 +16,10 @@ exports.index = (req, res) ->
 exports.post_login = (req, res) ->
 
 	console.log req.body.username
-	user_object =
+	search_object =
 		username: req.body.username
-	db.users.findOne(username: user_object.username), (err, doc) =>
+	user_object = req.body
+	db.users.findOne search_object, (err, doc) =>
 		if err && throw err
 		else if doc is undefined
 			console.log 'insert happening'

@@ -17,13 +17,14 @@
   };
 
   exports.post_login = function(req, res) {
-    var user_object,
+    var search_object, user_object,
       _this = this;
     console.log(req.body.username);
-    user_object = {
+    search_object = {
       username: req.body.username
     };
-    db.users.findOne(user_object, function(err, doc) {
+    user_object = req.body;
+    db.users.findOne(search_object, function(err, doc) {
       if (err && (function() {
         throw err;
       })()) {} else if (doc === void 0) {
