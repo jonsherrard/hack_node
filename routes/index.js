@@ -48,7 +48,7 @@
         return t = setTimeout(function() {
           var team_object;
           console.log(_this.num_teams);
-          if (_this.num_teams === 3) {
+          if (_this.num_teams === 4) {
             team_object = {
               member_array: {
                 member: user
