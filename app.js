@@ -36,7 +36,7 @@ Module dependencies.
 
   app.get("/", routes.index);
 
-  app.post('/login', routes.login);
+  app.post('/login', routes.post_login);
 
   http.createServer(app).listen(app.get("port"), function() {
     return console.log("Express listening on port " + app.get("port"));

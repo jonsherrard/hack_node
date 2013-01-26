@@ -21,6 +21,6 @@ app.configure "development", ->
 	app.use express.errorHandler()
 
 app.get "/", routes.index
-app.post '/login', routes.login
+app.post '/login', routes.post_login
 http.createServer(app).listen app.get("port"), ->
 	console.log "Express listening on port " + app.get("port")
