@@ -13,16 +13,10 @@ exports.index = (req, res) ->
   res.render "bootstrap",
       title: "Date Find"
 
-exports.login = (req, res) ->
-	user_object =
-		username: "Mark"
-		password: "password123"
-		type: "dev"
-		skills: 'none'
+exports.post_login = (req, res) ->
+
+	user_object = req.body
 	
 	db.users.insert user_object
 
-	test_object =
-		hello: 'world'
-
-	res.json test_object
+	res.json user_object

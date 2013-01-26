@@ -16,19 +16,11 @@
     });
   };
 
-  exports.login = function(req, res) {
-    var test_object, user_object;
-    user_object = {
-      username: "Mark",
-      password: "password123",
-      type: "dev",
-      skills: 'none'
-    };
+  exports.post_login = function(req, res) {
+    var user_object;
+    user_object = req.body;
     db.users.insert(user_object);
-    test_object = {
-      hello: 'world'
-    };
-    return res.json(test_object);
+    return res.json(user_object);
   };
 
 }).call(this);
