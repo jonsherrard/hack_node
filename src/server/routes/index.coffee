@@ -33,5 +33,3 @@ exports.post_login = (req, res) ->
 					res.json(logged_in: true)
 		else
 			res.json(loggin_in: true)
-
-	res.json user_object
