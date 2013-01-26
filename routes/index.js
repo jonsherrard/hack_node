@@ -28,7 +28,7 @@
       console.log(doc);
       if (err && (function() {
         throw err;
-      })()) {} else if (doc === void 0) {
+      })()) {} else if (doc === null) {
         console.log('insert happening');
         return db.users.insert(user_object, function(err, doc) {
           if (err) {
