@@ -36,14 +36,14 @@
         return res.json(doc._id);
       }
     });
-    db.teams.count(function(err, num) {
-      return console.log(num);
-    });
     return team_assignment = function(user) {
-      var user_type;
+      var num_teams, user_type;
       user_type = user.type;
       if (user_type === 'developer') {
-        return console.log(db.teams.count());
+        num_teams = db.teams.count(function(err, num) {
+          return num;
+        });
+        return console.log(num_teams);
       } else if (user_type === 'other') {
         return console.log('other dude');
       } else if (user_type === 'designer') {
