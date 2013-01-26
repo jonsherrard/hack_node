@@ -36,7 +36,7 @@ exports.post_login = (req, res) ->
 	team_assignment = (user) =>
 		console.log '------team team_assignment user'
 		console.log user
-		user_type = user[0].type
+		user_type = user.type
 		switch user_type
 			when 'developer'
 				num_teams = db.teams.count()
@@ -56,6 +56,9 @@ exports.post_login = (req, res) ->
 				console.log 'designer'
 
 	user = insert_user(req)
+	console.log 'after insert'
+	console.log user
+	console.log 'before team'
 	team_assignment(user)
 
 	res.json user._id
