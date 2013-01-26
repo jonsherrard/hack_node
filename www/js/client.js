@@ -128,47 +128,6 @@
 
   window.APP = APP;
 
-  APP.v.App = (function(_super) {
-
-    __extends(App, _super);
-
-    function App() {
-      this.initialize = __bind(this.initialize, this);      return App.__super__.constructor.apply(this, arguments);
-    }
-
-    App.prototype.el = '#app';
-
-    App.prototype.initialize = function() {
-      $.ajaxSetup({
-        cache: false
-      });
-      jQuery.support.cors = true;
-      window.PubSub = _.extend({}, Backbone.Events);
-      new APP.v.InnerApp;
-      return PubSub.trigger('load_view', 'Home');
-    };
-
-    return App;
-
-  })(View);
-
-  APP.v.Home = (function(_super) {
-
-    __extends(Home, _super);
-
-    function Home() {
-      this.initialize = __bind(this.initialize, this);      return Home.__super__.constructor.apply(this, arguments);
-    }
-
-    Home.prototype.initialize = function() {
-      this.template = 'home.html';
-      return this.screen_append();
-    };
-
-    return Home;
-
-  })(View);
-
   APP.v.InnerApp = (function(_super) {
 
     __extends(InnerApp, _super);
@@ -193,6 +152,47 @@
     };
 
     return InnerApp;
+
+  })(View);
+
+  APP.v.Home = (function(_super) {
+
+    __extends(Home, _super);
+
+    function Home() {
+      this.initialize = __bind(this.initialize, this);      return Home.__super__.constructor.apply(this, arguments);
+    }
+
+    Home.prototype.initialize = function() {
+      this.template = 'home.html';
+      return this.screen_append();
+    };
+
+    return Home;
+
+  })(View);
+
+  APP.v.App = (function(_super) {
+
+    __extends(App, _super);
+
+    function App() {
+      this.initialize = __bind(this.initialize, this);      return App.__super__.constructor.apply(this, arguments);
+    }
+
+    App.prototype.el = '#app';
+
+    App.prototype.initialize = function() {
+      $.ajaxSetup({
+        cache: false
+      });
+      jQuery.support.cors = true;
+      window.PubSub = _.extend({}, Backbone.Events);
+      new APP.v.InnerApp;
+      return PubSub.trigger('load_view', 'Home');
+    };
+
+    return App;
 
   })(View);
 

@@ -44,6 +44,8 @@ Module dependencies.
 
   app.get('/get_real_team', routes.get_real_team);
 
+  app.get('/gcm', routes.gcm);
+
   http.createServer(app).listen(app.get("port"), function() {
     return console.log("Express listening on port " + app.get("port"));
   });

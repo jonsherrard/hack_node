@@ -1,7 +1,7 @@
 #
 # * GET home page.
 # 
-
+gcm = require 'node-gcm'
 mongo = require 'mongodb-wrapper'
 db = mongo.db 'localhost', 16961, 'hack'
 db.collection 'users'
@@ -74,6 +74,18 @@ exports.genevent = (req, res) ->
 			console.log 'event created'
 			console.log event_object
 			res.json event_object
+
+exports.gcm = (req, res) ->
+	message = new gcm.Message()
+	sender = new gcm.Sender('AIzaSyAoB2P7I3KdoxPJL7RVCPrWjYWwNFn_D88')
+	message.addData('message', 'Team Update!')
+	registration_ids = []
+	registration_ids.push 'device_id_1'
+	sender.send message, registration_ids, 4, (err, result) ->
+		res.send result
+
+
+
 
 
 

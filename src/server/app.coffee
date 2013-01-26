@@ -25,5 +25,6 @@ app.post '/login', routes.post_login
 app.get "/genevent", routes.genevent
 app.get '/get_team', routes.get_fake_team
 app.get '/get_real_team', routes.get_real_team
+app.get '/gcm', routes.gcm
 http.createServer(app).listen app.get("port"), ->
 	console.log "Express listening on port " + app.get("port")
