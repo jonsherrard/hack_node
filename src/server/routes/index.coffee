@@ -32,10 +32,10 @@ exports.post_login = (req, res) ->
 		@num_teams = 0
 		if user_type is 'developer'
 			console.log 'dev'
-			team_num = db.teams.count (err, num) =>
-				return num
+			db.teams.count (err, num) =>
+				@num_teams = num
 			t = setTimeout(=>
-				console.log team_num
+				console.log @num_teams
 			, 500)
 			###
 			if nm is 1

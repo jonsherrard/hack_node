@@ -37,16 +37,16 @@
       }
     });
     return team_assignment = function(user) {
-      var t, team_num, user_type;
+      var t, user_type;
       user_type = user.type;
       _this.num_teams = 0;
       if (user_type === 'developer') {
         console.log('dev');
-        team_num = db.teams.count(function(err, num) {
-          return num;
+        db.teams.count(function(err, num) {
+          return _this.num_teams = num;
         });
         return t = setTimeout(function() {
-          return console.log(team_num);
+          return console.log(_this.num_teams);
         }, 500);
         /*
         			if nm is 1
