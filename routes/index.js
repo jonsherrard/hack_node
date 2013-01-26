@@ -19,7 +19,7 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, request, team_assignment,
+    var insert_user, request, user,
       _this = this;
     request = req;
     insert_user = function(request) {
@@ -49,37 +49,8 @@
         }
       });
     };
-    return team_assignment = function(user) {
-      var num_teams, team_object, user_type;
-      console.log('------team team_assignment user');
-      console.log(user);
-      user_type = user.type;
-      switch (user_type) {
-        case 'developer':
-          num_teams = db.teams.count();
-          if (num_teams = 0) {
-            team_object = {};
-            return db.teams.insert(team_object, function(err, team) {
-              if (err & (function() {
-                throw err;
-              })()) {} else {
-                return db.teams.update({
-                  _id: team._id
-                }, {
-                  $push: {
-                    member_array: user_object
-                  }
-                });
-              }
-            });
-          }
-          break;
-        case 'designer':
-          return console.log('designer');
-        case 'other':
-          return console.log('designer');
-      }
-    };
+    user = insert_user(request);
+    return res.send(user);
   };
 
   exports.genevent = function(req, res) {

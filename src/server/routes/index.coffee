@@ -34,27 +34,10 @@ exports.post_login = (req, res) ->
 			else
 				return user
 
-	team_assignment = (user) =>
-		console.log '------team team_assignment user'
-		console.log user
-		user_type = user.type
-		switch user_type
-			when 'developer'
-				num_teams = db.teams.count()
-				if num_teams = 0
-					team_object = {}
-					db.teams.insert team_object, (err, team) =>
-						if err & throw err
-						else
-							db.teams.update
-								_id: team._id
-							,
-								$push:
-									member_array: user_object
-			when 'designer'
-				console.log 'designer'
-			when 'other'
-				console.log 'designer'
+	user = insert_user(request)
+
+	res.send user
+
 
 exports.genevent = (req, res) ->
 	event_object =
