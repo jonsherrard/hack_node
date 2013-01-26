@@ -19,7 +19,9 @@
   exports.post_login = function(req, res) {
     var user_object;
     user_object = req.body;
-    db.users.update(user_object, {
+    db.users.update({
+      username: req.body.username
+    }, user_object, {
       upsert: true
     });
     return res.json(user_object);
