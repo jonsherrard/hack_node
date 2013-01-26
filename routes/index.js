@@ -2,7 +2,7 @@
 (function() {
   var db, mongo;
 
-  mongo = require('mongoose');
+  mongo = require('mongodb-wrapper');
 
   db = mongo.db('localhost', 16961, 'hack');
 
