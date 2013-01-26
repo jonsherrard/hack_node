@@ -15,26 +15,23 @@ exports.index = (req, res) ->
      	title: "Team Jam"
 
 exports.post_login = (req, res) ->
-	request = req
-	insert_user = (request) =>
-		search_object =
-			username: request.body.username
-		user_object = request.body
-		db.users.findOne search_object, (err, doc) =>
-			console.log doc
-			if err && throw err
-			else if doc is null
-				console.log 'insert happening'
-				db.users.insert user_object, (err, user) =>
-					if err
-						throw err
-						res.json(error: 'DB error')
-					else
-						return user
-			else
-				return user
+	search_object =
+		username: req.body.username
+	user_object = req.body
+	db.users.findOne search_object, (err, doc) =>
+		console.log doc
+		if err && throw err
+		else if doc is null
+			console.log 'insert happening'
+			db.users.insert user_object, (err, user) =>
+				if err
+					throw err
+					res.json(error: 'DB error')
+				else
+					res.json user
+		else
+			res.json user
 
-	user = insert_user(request)
 
 	res.send user
 

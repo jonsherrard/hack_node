@@ -19,37 +19,32 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, request, user,
+    var search_object, user_object,
       _this = this;
-    request = req;
-    insert_user = function(request) {
-      var search_object, user_object;
-      search_object = {
-        username: request.body.username
-      };
-      user_object = request.body;
-      return db.users.findOne(search_object, function(err, doc) {
-        console.log(doc);
-        if (err && (function() {
-          throw err;
-        })()) {} else if (doc === null) {
-          console.log('insert happening');
-          return db.users.insert(user_object, function(err, user) {
-            if (err) {
-              throw err;
-              return res.json({
-                error: 'DB error'
-              });
-            } else {
-              return user;
-            }
-          });
-        } else {
-          return user;
-        }
-      });
+    search_object = {
+      username: req.body.username
     };
-    user = insert_user(request);
+    user_object = req.body;
+    db.users.findOne(search_object, function(err, doc) {
+      console.log(doc);
+      if (err && (function() {
+        throw err;
+      })()) {} else if (doc === null) {
+        console.log('insert happening');
+        return db.users.insert(user_object, function(err, user) {
+          if (err) {
+            throw err;
+            return res.json({
+              error: 'DB error'
+            });
+          } else {
+            return res.json(user);
+          }
+        });
+      } else {
+        return res.json(user);
+      }
+    });
     return res.send(user);
   };
 
