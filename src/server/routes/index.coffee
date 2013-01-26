@@ -33,9 +33,6 @@ exports.post_login = (req, res) ->
 			res.json user
 
 
-	res.send user
-
-
 exports.genevent = (req, res) ->
 	event_object =
 		location: 'Google Campus'

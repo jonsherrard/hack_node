@@ -25,7 +25,7 @@
       username: req.body.username
     };
     user_object = req.body;
-    db.users.findOne(search_object, function(err, doc) {
+    return db.users.findOne(search_object, function(err, doc) {
       console.log(doc);
       if (err && (function() {
         throw err;
@@ -45,7 +45,6 @@
         return res.json(user);
       }
     });
-    return res.send(user);
   };
 
   exports.genevent = function(req, res) {
