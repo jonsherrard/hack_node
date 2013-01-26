@@ -19,26 +19,69 @@
   };
 
   exports.post_login = function(req, res) {
-    console.log('fuck');
-    return res.json('fuck');
-    /*search_object =
-    		username: req.body.username
-    	user_object = req.body
-    	db.users.findOne search_object, (err, doc) =>
-    		console.log doc
-    		if err && throw err
-    		else if doc is null
-    			console.log 'insert happening'
-    			db.users.insert user_object, (err, user) =>
-    				if err
-    					throw err
-    					res.json(error: 'DB error')
-    				else
-    					res.json user
-    		else
-    			res.json user
-    */
-
+    var insert_user, request, team_assignment, user,
+      _this = this;
+    request = req;
+    insert_user = function(request) {
+      var search_object, user_object;
+      search_object = {
+        username: request.body.username
+      };
+      user_object = request.body;
+      return db.users.findOne(search_object, function(err, doc) {
+        console.log(doc);
+        if (err && (function() {
+          throw err;
+        })()) {} else if (doc === null) {
+          console.log('insert happening');
+          return db.users.insert(user_object, function(err, user) {
+            if (err) {
+              throw err;
+              return res.json({
+                error: 'DB error'
+              });
+            } else {
+              return user;
+            }
+          });
+        } else {
+          return user;
+        }
+      });
+    };
+    team_assignment = function(user) {
+      var num_teams, team_object, user_type;
+      console.log('------team team_assignment user');
+      console.log(user);
+      user_type = user.type;
+      switch (user_type) {
+        case 'developer':
+          num_teams = db.teams.count();
+          if (num_teams = 0) {
+            team_object = {};
+            return db.teams.insert(team_object, function(err, team) {
+              if (err & (function() {
+                throw err;
+              })()) {} else {
+                return db.teams.update({
+                  _id: team._id
+                }, {
+                  $push: {
+                    member_array: user_object
+                  }
+                });
+              }
+            });
+          }
+          break;
+        case 'designer':
+          return console.log('designer');
+        case 'other':
+          return console.log('designer');
+      }
+    };
+    user = insert_user(req);
+    return res.json(user);
   };
 
   exports.genevent = function(req, res) {
