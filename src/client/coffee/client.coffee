@@ -117,12 +117,6 @@ class APP.v.App extends View
 
 
 
-class APP.v.Home extends View
-	initialize : =>
-		@template = 'home.html'
-		@screen_append()
-
-
 class APP.v.InnerApp extends View
 	el : 'screen'
 	initialize : =>
@@ -133,3 +127,9 @@ class APP.v.InnerApp extends View
 		@current_view = new APP.v[view] data
 		previous_view && previous_view.kill()
 
+
+
+class APP.v.Home extends View
+	initialize : =>
+		@template = 'home.html'
+		@screen_append()

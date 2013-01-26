@@ -15,24 +15,29 @@ exports.index = (req, res) ->
       title: "Team Jam"
 
 exports.post_login = (req, res) ->
-	search_object =
-		username: req.body.username
-	user_object = req.body
-	db.users.findOne search_object, (err, doc) =>
-		console.log doc
-		if err && throw err
-		else if doc is null
-			console.log 'insert happening'
-			db.users.insert user_object, (err, user) =>
-				if err
-					throw err
-					res.json(error: 'DB error')
-				else
-					res.json user._id
-		else
-			res.json user._id
+	insert_user = (req.body) ->
+		search_object =
+			username: req.body.username
+		user_object = req.body
+		db.users.findOne search_object, (err, doc) =>
+			console.log doc
+			if err && throw err
+			else if doc is null
+				console.log 'insert happening'
+				db.users.insert user_object, (err, user) =>
+					if err
+						throw err
+						res.json(error: 'DB error')
+					else
+						return user
+			else
+				return user
 
-	user_type = user_object.type
+	user = insert_user()
+
+	team_assignment = (user)
+
+	user_type = user.type
 	switch user_type
 		when 'developer'
 			num_teams = db.teams.count()
@@ -48,6 +53,8 @@ exports.post_login = (req, res) ->
 								member_array: user_object
 		when 'designer'
 		when 'other'
+
+	res.json user._id
 
 
 
