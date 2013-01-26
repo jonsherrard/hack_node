@@ -39,11 +39,12 @@
     return team_assignment = function(user) {
       var user_type;
       user_type = user.user_type;
-      switch (user_type) {
-        case 'developer':
-          return console.log('dev');
-        case 'other':
-          return console.log('other dude');
+      if (user_type === 'developer') {
+        return console.log('dev');
+      } else if (user_type === 'other') {
+        return console.log('other dude');
+      } else if (user_type === 'designer') {
+        return console.log('designer');
       }
     };
   };
