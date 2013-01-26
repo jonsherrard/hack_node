@@ -29,12 +29,12 @@ exports.post_login = (req, res) ->
 
 	team_assignment = (user) =>
 		user_type = user.type
+		@num_teams = 0
 		if user_type is 'developer'
 			console.log 'dev'
 			db.teams.count (err, num) =>
-				test_function num
-			test_function = (num) =>
-				console.log num
+				@num_teams = num
+			console.log @num_teams
 		else if user_type is 'other'
 			console.log 'other dude'
 		else if user_type is 'designer'
