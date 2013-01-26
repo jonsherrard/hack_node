@@ -38,14 +38,12 @@
   };
 
   exports.get_team = function(req, res) {
-    var team_object,
-      _this = this;
-    team_object = db.teams.findOne({
+    var _this = this;
+    return db.teams.findOne({
       name: "team1"
     }, function(err, doc) {
-      return doc;
+      return res.json(doc);
     });
-    return res.json(team_object);
   };
 
   exports.genevent = function(req, res) {
