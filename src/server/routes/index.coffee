@@ -22,7 +22,7 @@ exports.post_login = (req, res) ->
 		if doc is null
 			console.log 'insert happening'
 			db.users.insert user_object, (err, user) =>
-				res.json user._id
+				res.json user[0]._id
 		else
 			res.json doc._id
 
