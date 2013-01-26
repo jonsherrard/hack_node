@@ -29,9 +29,9 @@ exports.post_login = (req, res) ->
 					throw err
 					res.json(error: 'DB error')
 				else
-					res.json doc[0]._id
+					res.json doc._id
 		else
-			res.json doc[0]._id
+			res.json doc._id
 
 exports.genevent = (req, res) ->
 	event_object =
