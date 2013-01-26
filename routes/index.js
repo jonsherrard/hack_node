@@ -19,7 +19,7 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, num_teams, team_assignment, team_object, user, user_type,
+    var insert_user, team_assignment, user,
       _this = this;
     insert_user = function(req) {
       var search_object, user_object;
@@ -48,35 +48,37 @@
         }
       });
     };
+    team_assignment = function(user) {
+      var num_teams, team_object, user_type;
+      user_type = user.type;
+      switch (user_type) {
+        case 'developer':
+          num_teams = db.teams.count();
+          if (num_teams = 0) {
+            team_object = {};
+            return db.teams.insert(team_object, function(err, team) {
+              if (err & (function() {
+                throw err;
+              })()) {} else {
+                return db.teams.update({
+                  _id: team._id
+                }, {
+                  $push: {
+                    member_array: user_object
+                  }
+                });
+              }
+            });
+          }
+          break;
+        case 'designer':
+          return console.log('designer');
+        case 'other':
+          return console.log('designer');
+      }
+    };
     user = insert_user(req);
-    team_assignment = user;
-    user_type = user.type;
-    switch (user_type) {
-      case 'developer':
-        num_teams = db.teams.count();
-        if (num_teams = 0) {
-          team_object = {};
-          db.teams.insert(team_object, function(err, team) {
-            if (err & (function() {
-              throw err;
-            })()) {} else {
-              return db.teams.update({
-                _id: team._id
-              }, {
-                $push: {
-                  member_array: user_object
-                }
-              });
-            }
-          });
-        }
-        break;
-      case 'designer':
-        console.log('designer');
-        break;
-      case 'other':
-        console.log('designer');
-    }
+    team_assignment(user);
     return res.json(user._id);
   };
 
