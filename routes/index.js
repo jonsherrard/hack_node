@@ -50,8 +50,9 @@
     };
     team_assignment = function(user) {
       var num_teams, team_object, user_type;
+      console.log('------team team_assignment user');
       console.log(user);
-      user_type = user.type;
+      user_type = user[0].type;
       switch (user_type) {
         case 'developer':
           num_teams = db.teams.count();
