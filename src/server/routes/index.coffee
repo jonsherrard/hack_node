@@ -14,6 +14,14 @@ exports.index = (req, res) ->
       title: "Date Find"
 
 exports.login = (req, res) ->
+	user_object =
+		username: "Mark"
+		password: "password123"
+		type: "dev"
+		skills: 'none'
+	
+	db.users.insert user_object
+
 	test_object =
 		hello: 'world'
 

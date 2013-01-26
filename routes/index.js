@@ -17,7 +17,14 @@
   };
 
   exports.login = function(req, res) {
-    var test_object;
+    var test_object, user_object;
+    user_object = {
+      username: "Mark",
+      password: "password123",
+      type: "dev",
+      skills: 'none'
+    };
+    db.users.insert(user_object);
     test_object = {
       hello: 'world'
     };
