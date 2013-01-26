@@ -37,7 +37,7 @@
       }
     });
     return team_assignment = function(user) {
-      var t, user_type;
+      var t, team_object, user_type;
       user_type = user.type;
       _this.num_teams = 0;
       if (user_type === 'developer') {
@@ -45,20 +45,21 @@
         db.teams.count(function(err, num) {
           return _this.num_teams = num;
         });
-        return t = setTimeout(function() {
+        t = setTimeout(function() {
           return console.log(_this.num_teams);
         }, 500);
-        /*
-        			if nm is 1
-        				team_object = {}
-        				db.teams.insert team_object, (err, team) =>
-        					db.teams.update
-        						_id: team._id
-        					,
-        						$push:
-        							member_array: user
-        */
-
+        if (_this.num_teams === 1) {
+          team_object = {};
+          return db.teams.insert(team_object, function(err, team) {
+            return db.teams.update({
+              _id: team._id
+            }, {
+              $push: {
+                member_array: user
+              }
+            });
+          });
+        }
       } else if (user_type === 'other') {
         return console.log('other dude');
       } else if (user_type === 'designer') {
