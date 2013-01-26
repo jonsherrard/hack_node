@@ -23,9 +23,7 @@
     db.users.update({
       username: req.body.username
     }, {
-      $set: {
-        user: user_object
-      }
+      $set: user_object
     }, {
       upsert: true
     });
