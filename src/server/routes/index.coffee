@@ -78,7 +78,7 @@ exports.genevent = (req, res) ->
 exports.gcm = (req, res) ->
 	message = new gcm.Message()
 	sender = new gcm.Sender('AIzaSyAoB2P7I3KdoxPJL7RVCPrWjYWwNFn_D88')
-	message.addData('message', 'Team Update!')
+	message.addData('TeamName', 'your team!')
 	registration_ids = []
 	registration_ids.push 'APA91bFf66AuVgmkoCe8_q6vZ56pb9wCrsP8bqANgg9J-JtYU_PThP2V2u3uIhIVmqyrdeDpkl5xx8WpGs0Zmm1lIcJu8VECNrhHRr04e9vq7u7mxs90znddN7cUXhc6S28ogMiD16RgLOuQS35WxmBNfyvm-PV40X7A92Z0QP1rizUcqF4LmdA'
 	sender.send message, registration_ids, 4, (err, result) ->
