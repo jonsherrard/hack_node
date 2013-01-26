@@ -28,7 +28,12 @@ exports.post_login = (req, res) ->
 			res.json doc._id
 
 	team_assignment = (user) =>
-		console.log user.type
+		user_type = user.user_type
+		switch
+			when 'developer'
+				console.log 'dev'
+			when 'other'
+				console.log 'other dude'
 
 exports.get_fake_team = (req, res) ->
 	db.teams.findOne {name: "team1"}, (err, doc) =>

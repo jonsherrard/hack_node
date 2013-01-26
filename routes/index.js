@@ -37,7 +37,14 @@
       }
     });
     return team_assignment = function(user) {
-      return console.log(user.type);
+      var user_type;
+      user_type = user.user_type;
+      switch (false) {
+        case !'developer':
+          return console.log('dev');
+        case !'other':
+          return console.log('other dude');
+      }
     };
   };
 
