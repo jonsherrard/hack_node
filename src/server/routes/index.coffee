@@ -11,11 +11,9 @@ db.collection 'events'
 
 exports.index = (req, res) ->
   res.render "bootstrap",
-      title: "Date Find"
+      title: "Team Jam"
 
 exports.post_login = (req, res) ->
-
-	console.log req.body.username
 	search_object =
 		username: req.body.username
 	user_object = req.body
@@ -24,14 +22,33 @@ exports.post_login = (req, res) ->
 		if err && throw err
 		else if doc is null
 			console.log 'insert happening'
-			db.users.insert user_object, (err, doc) =>
+			db.users.insert user_object, (err, user) =>
 				if err
 					throw err
 					res.json(error: 'DB error')
 				else
-					res.json doc._id
+					res.json user._id
 		else
-			res.json doc._id
+			res.json user._id
+
+	user_type = user_object.type
+	switch user_type
+		when 'developer'
+			num_teams = db.teams.count()
+			if num_teams = 0
+				team_object = {}
+				db.teams.insert team_object, (err, team) =>
+					if err & throw err
+					else
+						db.teams.update
+							_id: team._id
+						,
+							$push:
+								member_array: user_object
+		when 'designer'
+		when 'other'
+
+
 
 exports.genevent = (req, res) ->
 	event_object =
