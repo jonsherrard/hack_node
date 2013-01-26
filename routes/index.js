@@ -37,7 +37,6 @@
               error: 'DB error'
             });
           } else {
-            'logged in';
             return res.json({
               logged_in: true
             });
@@ -47,6 +46,27 @@
         return res.json({
           loggin_in: true
         });
+      }
+    });
+  };
+
+  exports.genevent = function(req, res) {
+    var event_object,
+      _this = this;
+    event_object = {
+      location: 'Google Campus',
+      title: 'GDG Design in Action',
+      date: new Date(),
+      teams_array: []
+    };
+    return db.events.insert(event_object, function(err, doc) {
+      if (err) {
+        throw err;
+        return res.json('error!');
+      } else {
+        console.log('event created');
+        console.log(event_object);
+        return res.json(event_object);
       }
     });
   };

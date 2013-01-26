@@ -29,7 +29,24 @@ exports.post_login = (req, res) ->
 					throw err
 					res.json(error: 'DB error')
 				else
-					'logged in'
 					res.json(logged_in: true)
 		else
 			res.json(loggin_in: true)
+
+exports.genevent = (req, res) ->
+	event_object =
+		location: 'Google Campus'
+		title: 'GDG Design in Action'
+		date: new Date()
+		teams_array: []
+	db.events.insert event_object, (err, doc) =>
+			if err 
+				throw err
+				res.json 'error!'
+			else
+				console.log 'event created'
+				console.log event_object
+				res.json event_object
+
+
+
