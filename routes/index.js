@@ -36,7 +36,7 @@
         return res.json(doc._id);
       }
     });
-    db.teams.count({}, function(err, num) {
+    db.teams.count(function(err, num) {
       return console.log(num);
     });
     return team_assignment = function(user) {
