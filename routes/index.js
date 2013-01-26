@@ -23,26 +23,19 @@
       _this = this;
     request = req;
     insert_user = function(request) {
-      var returned_user, search_object, user_object;
+      var search_object, user_object;
       search_object = {
         username: request.body.username
       };
       user_object = request.body;
-      returned_user = db.users.findOne(search_object, function(err, doc) {
-        console.log(doc);
-        if (err && (function() {
-          throw err;
-        })()) {} else if (doc === null) {
+      return db.users.findOne(search_object, function(err, doc) {
+        if (doc === null) {
           console.log('insert happening');
-          return db.users.insert(user_object, function(user) {
-            console.log(user);
-            return user;
-          });
+          return db.users.insert(user_object);
         } else {
           return doc;
         }
       });
-      return returned_user;
     };
     team_assignment = function(user) {
       var num_teams, team_object, user_type;

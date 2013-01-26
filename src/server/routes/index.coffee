@@ -20,17 +20,11 @@ exports.post_login = (req, res) ->
 		search_object =
 			username: request.body.username
 		user_object = request.body
-		returned_user = db.users.findOne search_object, (err, doc) =>
-			console.log doc
-			if err && throw err
-			else if doc is null
+		db.users.findOne search_object, (err, doc) =>
+			if doc is null
 				console.log 'insert happening'
-				db.users.insert user_object, (user) =>
-					console.log user
-					return user
-			else
-				return doc
-		return returned_user
+				db.users.insert user_object
+			else return doc
 
 	team_assignment = (user) =>
 		console.log '------team team_assignment user'
