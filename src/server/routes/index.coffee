@@ -36,7 +36,7 @@ exports.post_login = (req, res) ->
 				@num_teams = num
 			t = setTimeout(=>
 				console.log @num_teams
-				if @num_teams is 2
+				if @num_teams is 3
 					team_object = {}
 					db.teams.insert team_object, (err, team) =>
 						console.log team
@@ -44,7 +44,8 @@ exports.post_login = (req, res) ->
 							_id: team._id
 						,
 							$push:
-								member_array: user
+								member_array:
+									member: user
 			, 500)
 
 		else if user_type is 'other'

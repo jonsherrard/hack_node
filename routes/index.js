@@ -48,7 +48,7 @@
         return t = setTimeout(function() {
           var team_object;
           console.log(_this.num_teams);
-          if (_this.num_teams === 2) {
+          if (_this.num_teams === 3) {
             team_object = {};
             return db.teams.insert(team_object, function(err, team) {
               console.log(team);
@@ -56,7 +56,9 @@
                 _id: team._id
               }, {
                 $push: {
-                  member_array: user
+                  member_array: {
+                    member: user
+                  }
                 }
               });
             });
