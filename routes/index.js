@@ -37,13 +37,17 @@
     });
   };
 
-  exports.get_team = function(req, res) {
+  exports.get_fake_team = function(req, res) {
     var _this = this;
     return db.teams.findOne({
       name: "team1"
     }, function(err, doc) {
       return res.json(doc);
     });
+  };
+
+  exports.get_real_team = function(req, res) {
+    return res.json('hello');
   };
 
   exports.genevent = function(req, res) {

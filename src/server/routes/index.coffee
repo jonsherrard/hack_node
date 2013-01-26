@@ -26,9 +26,12 @@ exports.post_login = (req, res) ->
 		else
 			res.json doc._id
 
-exports.get_team = (req, res) ->
+exports.get_fake_team = (req, res) ->
 	db.teams.findOne {name: "team1"}, (err, doc) =>
 		res.json doc
+
+exports.get_real_team = (req, res) ->
+	res.json 'hello'
 
 exports.genevent = (req, res) ->
 	event_object =
