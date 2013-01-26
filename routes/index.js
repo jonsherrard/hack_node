@@ -19,7 +19,7 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, team_assignment,
+    var insert_user, t, team_assignment, user,
       _this = this;
     insert_user = function(req) {
       var search_object, user_object;
@@ -48,8 +48,8 @@
         }
       });
     };
-    return team_assignment = function(user) {
-      var num_teams, t, team_object, user_type;
+    team_assignment = function(user) {
+      var num_teams, team_object, user_type;
       console.log('------team team_assignment user');
       console.log(user);
       user_type = user.type;
@@ -58,7 +58,7 @@
           num_teams = db.teams.count();
           if (num_teams = 0) {
             team_object = {};
-            db.teams.insert(team_object, function(err, team) {
+            return db.teams.insert(team_object, function(err, team) {
               if (err & (function() {
                 throw err;
               })()) {} else {
@@ -74,16 +74,15 @@
           }
           break;
         case 'designer':
-          console.log('designer');
-          break;
+          return console.log('designer');
         case 'other':
-          console.log('designer');
+          return console.log('designer');
       }
-      user = insert_user(req);
-      return t = setTimeout(function() {
-        return team_assignment(user);
-      }, 500);
     };
+    user = insert_user(req);
+    return t = setTimeout(function() {
+      return team_assignment(user);
+    }, 500);
   };
 
   exports.genevent = function(req, res) {

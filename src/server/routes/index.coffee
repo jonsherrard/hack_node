@@ -55,10 +55,10 @@ exports.post_login = (req, res) ->
 			when 'other'
 				console.log 'designer'
 
-		user = insert_user(req)
-		t = setTimeout(=>
- 			team_assignment(user)
-		, 500)
+	user = insert_user(req)
+	t = setTimeout(=>
+ 		team_assignment(user)
+	, 500)
 
 exports.genevent = (req, res) ->
 	event_object =
