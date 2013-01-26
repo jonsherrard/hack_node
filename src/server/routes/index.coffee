@@ -34,7 +34,7 @@ exports.post_login = (req, res) ->
 			console.log 'dev'
 			db.teams.count (err, num) =>
 				@num_teams = num
-			console.log @num_teams
+				console.log @num_teams
 		else if user_type is 'other'
 			console.log 'other dude'
 		else if user_type is 'designer'

@@ -42,10 +42,10 @@
       _this.num_teams = 0;
       if (user_type === 'developer') {
         console.log('dev');
-        db.teams.count(function(err, num) {
-          return _this.num_teams = num;
+        return db.teams.count(function(err, num) {
+          _this.num_teams = num;
+          return console.log(_this.num_teams);
         });
-        return console.log(_this.num_teams);
       } else if (user_type === 'other') {
         return console.log('other dude');
       } else if (user_type === 'designer') {
