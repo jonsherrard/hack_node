@@ -11,14 +11,15 @@ db.collection 'teams'
 
 
 exports.index = (req, res) ->
-  res.render "bootstrap",
-      title: "Team Jam"
+ 	res.render "bootstrap",
+     	title: "Team Jam"
 
 exports.post_login = (req, res) ->
-	insert_user = (req) =>
+	request = req
+	insert_user = (request) =>
 		search_object =
-			username: req.body.username
-		user_object = req.body
+			username: request.body.username
+		user_object = request.body
 		db.users.findOne search_object, (err, doc) =>
 			console.log doc
 			if err && throw err
@@ -54,11 +55,6 @@ exports.post_login = (req, res) ->
 				console.log 'designer'
 			when 'other'
 				console.log 'designer'
-
-	user = insert_user(req)
-	t = setTimeout(=>
- 		team_assignment(user)
-	, 500)
 
 exports.genevent = (req, res) ->
 	event_object =

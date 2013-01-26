@@ -19,14 +19,15 @@
   };
 
   exports.post_login = function(req, res) {
-    var insert_user, t, team_assignment, user,
+    var insert_user, request, team_assignment,
       _this = this;
-    insert_user = function(req) {
+    request = req;
+    insert_user = function(request) {
       var search_object, user_object;
       search_object = {
-        username: req.body.username
+        username: request.body.username
       };
-      user_object = req.body;
+      user_object = request.body;
       return db.users.findOne(search_object, function(err, doc) {
         console.log(doc);
         if (err && (function() {
@@ -48,7 +49,7 @@
         }
       });
     };
-    team_assignment = function(user) {
+    return team_assignment = function(user) {
       var num_teams, team_object, user_type;
       console.log('------team team_assignment user');
       console.log(user);
@@ -79,10 +80,6 @@
           return console.log('designer');
       }
     };
-    user = insert_user(req);
-    return t = setTimeout(function() {
-      return team_assignment(user);
-    }, 500);
   };
 
   exports.genevent = function(req, res) {
