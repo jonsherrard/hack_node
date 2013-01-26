@@ -48,9 +48,10 @@
         return t = setTimeout(function() {
           var team_object;
           console.log(_this.num_teams);
-          if (_this.num_teams === 1) {
+          if (_this.num_teams === 2) {
             team_object = {};
             return db.teams.insert(team_object, function(err, team) {
+              console.log(team);
               return db.teams.update({
                 _id: team._id
               }, {
