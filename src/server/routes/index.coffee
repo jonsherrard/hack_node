@@ -15,7 +15,8 @@ exports.index = (req, res) ->
      	title: "Team Jam"
 
 exports.post_login = (req, res) ->
-	search_object =
+	res.send 'fuck'
+	###search_object =
 		username: req.body.username
 	user_object = req.body
 	db.users.findOne search_object, (err, doc) =>
@@ -30,7 +31,7 @@ exports.post_login = (req, res) ->
 				else
 					res.json user
 		else
-			res.json user
+			res.json user ###
 
 
 exports.genevent = (req, res) ->
