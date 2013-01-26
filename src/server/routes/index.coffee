@@ -16,6 +16,7 @@ exports.index = (req, res) ->
 
 exports.post_login = (req, res) ->
 	console.log 'fuck'
+	res.json 'fuck'
 	###search_object =
 		username: req.body.username
 	user_object = req.body
