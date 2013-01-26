@@ -1,4 +1,4 @@
-remote = 'webfaction:webapps/hack_node'
+remote = 'webfaction:webapps/node_new'
 
 fs 					= require 'fs'
 {exec} 				= require 'child_process'

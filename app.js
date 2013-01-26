@@ -19,7 +19,7 @@ Module dependencies.
   app = express();
 
   app.configure(function() {
-    app.set("port", process.env.PORT || 25186);
+    app.set("port", process.env.PORT || 14343);
     app.set("views", __dirname + "/views");
     app.set("view engine", "jade");
     app.use(express.favicon());
