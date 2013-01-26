@@ -27,7 +27,7 @@ exports.post_login = (req, res) ->
 			res.json doc._id
 
 exports.get_team = (req, res) ->
-	team_object =  db.teams.findOne {}, (err, doc) =>
+	team_object =  db.teams.findOne {name: "team1"}, (err, doc) =>
 		return doc
 	res.json team_object
 

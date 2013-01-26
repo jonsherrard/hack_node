@@ -40,7 +40,9 @@
   exports.get_team = function(req, res) {
     var team_object,
       _this = this;
-    team_object = db.teams.findOne({}, function(err, doc) {
+    team_object = db.teams.findOne({
+      name: "team1"
+    }, function(err, doc) {
       return doc;
     });
     return res.json(team_object);
