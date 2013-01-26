@@ -40,7 +40,9 @@
       var thing, user_type;
       user_type = user.type;
       if (user_type === 'developer') {
-        thing = db.teams.count();
+        thing = db.teams.count(function(err, num) {
+          return num;
+        });
         return console.log(thing);
       } else if (user_type === 'other') {
         return console.log('other dude');

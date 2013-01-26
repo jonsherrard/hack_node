@@ -30,7 +30,7 @@ exports.post_login = (req, res) ->
 	team_assignment = (user) =>
 		user_type = user.type
 		if user_type is 'developer'
-			thing = db.teams.count, (err, num) =>
+			thing = db.teams.count (err, num) =>
 				return num
 			console.log thing
 		else if user_type is 'other'
