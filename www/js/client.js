@@ -128,6 +128,33 @@
 
   window.APP = APP;
 
+  APP.v.InnerApp = (function(_super) {
+
+    __extends(InnerApp, _super);
+
+    function InnerApp() {
+      this.load_view = __bind(this.load_view, this);
+      this.initialize = __bind(this.initialize, this);      return InnerApp.__super__.constructor.apply(this, arguments);
+    }
+
+    InnerApp.prototype.el = 'screen';
+
+    InnerApp.prototype.initialize = function() {
+      return PubSub.on('load_view', this.load_view);
+    };
+
+    InnerApp.prototype.load_view = function(view, data) {
+      var previous_view;
+      previous_view = this.current_view;
+      window.current_view = view;
+      this.current_view = new APP.v[view](data);
+      return previous_view && previous_view.kill();
+    };
+
+    return InnerApp;
+
+  })(View);
+
   APP.v.App = (function(_super) {
 
     __extends(App, _super);
@@ -166,33 +193,6 @@
     };
 
     return Home;
-
-  })(View);
-
-  APP.v.InnerApp = (function(_super) {
-
-    __extends(InnerApp, _super);
-
-    function InnerApp() {
-      this.load_view = __bind(this.load_view, this);
-      this.initialize = __bind(this.initialize, this);      return InnerApp.__super__.constructor.apply(this, arguments);
-    }
-
-    InnerApp.prototype.el = 'screen';
-
-    InnerApp.prototype.initialize = function() {
-      return PubSub.on('load_view', this.load_view);
-    };
-
-    InnerApp.prototype.load_view = function(view, data) {
-      var previous_view;
-      previous_view = this.current_view;
-      window.current_view = view;
-      this.current_view = new APP.v[view](data);
-      return previous_view && previous_view.kill();
-    };
-
-    return InnerApp;
 
   })(View);
 
