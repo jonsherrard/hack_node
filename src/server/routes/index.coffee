@@ -55,11 +55,11 @@ exports.post_login = (req, res) ->
 			when 'other'
 				console.log 'designer'
 
-	await insert_user req, defer result
+		user = insert_user(req)
+		setTimeout( =>
+			team_assignment(user)
+		, 500
 
-	console.log result
-
-	res.json result
 
 
 
