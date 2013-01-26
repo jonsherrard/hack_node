@@ -23,7 +23,7 @@
       _this = this;
     console.log(req.body);
     search_object = {
-      username: req.body.username
+      username: req.body.name
     };
     user_object = req.body;
     db.users.findOne(search_object, function(err, doc) {

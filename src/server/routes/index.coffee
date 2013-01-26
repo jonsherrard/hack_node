@@ -17,7 +17,7 @@ exports.index = (req, res) ->
 exports.post_login = (req, res) ->
 	console.log req.body
 	search_object =
-		username: req.body.username
+		username: req.body.name
 	user_object = req.body
 	db.users.findOne search_object, (err, doc) =>
 		if doc is null
