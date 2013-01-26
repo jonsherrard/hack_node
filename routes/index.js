@@ -17,15 +17,40 @@
   };
 
   exports.post_login = function(req, res) {
-    var user_object;
+    var search_object,
+      _this = this;
     console.log(req.body.username);
-    user_object = req.body;
-    db.users.update({
+    search_object = {
       username: req.body.username
-    }, {
-      $set: user_object
-    }, {
-      upsert: true
+    };
+    db.users.findOne(search_object, function(err, doc) {
+      var user_object;
+      user_object = req.body;
+      if (err && (function() {
+        throw err;
+      })()) {} else if (doc === void 0) {
+        console.log('insert happening');
+        return db.users.insert(user_object, function(err, doc) {
+          if (err) {
+            throw err;
+            return res.json({
+              error: 'DB error'
+            });
+          } else {
+            'logged in';
+            return res.json({
+              logged_in: true
+            });
+          }
+        });
+      } else {
+        console.log('update happening');
+        return db.users.update({
+          username: user_object.username
+        }, {
+          $set: user_object
+        });
+      }
     });
     return res.json(user_object);
   };

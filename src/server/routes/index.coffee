@@ -16,17 +16,30 @@ exports.index = (req, res) ->
 exports.post_login = (req, res) ->
 
 	console.log req.body.username
-
-
-
-	user_object = req.body
-	
-	db.users.update 
+	search_object =
 		username: req.body.username
-	,	
-		$set:
-			user_object
-	, 
-		upsert: true
+
+	db.users.findOne search_object, (err, doc) =>
+		user_object = req.body
+		if err && throw err
+		else if doc is undefined
+			console.log 'insert happening'
+			db.users.insert user_object, (err, doc) =>
+				if err
+					throw err
+					res.json(error: 'DB error')
+				else
+					'logged in'
+					res.json(logged_in: true)
+		else
+			console.log 'update happening'
+			db.users.update
+				username:  user_object.username
+			,
+				$set:
+					user_object
+
+
+	
 
 	res.json user_object
