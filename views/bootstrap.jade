@@ -1,0 +1,54 @@
+!!! 5
+//if IE 8
+    <html class="ie8" lang="en">
+//if IE 9
+    <html class="ie9" lang="en">
+//[if (gt IE 9)|!(IE)]><!
+html(lang='en')
+//<![endif]
+head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=0.5')
+    title= title
+    link(rel='icon', href='img/favicon.ico')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css')
+    // link(rel='stylesheet', href='css/c.min.css')
+    link(rel='stylesheet', href='css/style.css')
+
+    :coffeescript
+        window.Config =
+            #base_url : '//127.0.0.1:3000/'
+            base_url : '//devular.com'
+
+    script
+        (function(g,b,d){var c=b.head||b.getElementsByTagName('head'),D='readyState',E='onreadystatechange',F='DOMContentLoaded',G='addEventListener',H=setTimeout;;
+            function f(){
+                $LAB
+                    .script('js/lib/jquery.min.js')
+                    .script('//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js')
+                    .script('js/lib/moment.js')
+                    .script('js/lib/json2.min.js')
+                    .script('js/lib/underscore.min.js')
+                    .script('js/lib/handlebars.runtime.min.js').wait()
+                    .script('js/templates.js')				
+                    .script('js/lib/backbone.min.js').wait()
+                    .script('js/client.min.js').wait(function(){
+                        $(document).ready(function(){
+                            new APP.v.App;
+                        });
+                    });
+            }
+        H(function(){if('item'in c){if(!c[0]){H(arguments.callee,25);return}c=c[0]}var a=b.createElement('script'),e=false;a.onload=a[E]=function(){if((a[D]&&a[D]!=='complete'&&a[D]!=='loaded')||e){return false}a.onload=a[E]=null;e=true;f()};
+        a.src='js/lib/LAB.min.js';
+        c.insertBefore(a,c.firstChild)},0);if(b[D]==null&&b[G]){b[D]='loading';b[G](F,d=function(){b.removeEventListener(F,d,false);b[D]='complete'},false)}})(this,document);		
+
+body
+    #app
+        .navbar.navbar-inverse
+                .navbar-inner
+                        .container-fluid
+                            a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+                                span.icon-bar
+                                span.icon-bar
+                                span.icon-bar
+                            a.brand(href='#', name='top') #{title}
