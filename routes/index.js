@@ -38,8 +38,11 @@
   };
 
   exports.get_team = function(req, res) {
-    var team_object;
-    team_object = db.teams.findOne();
+    var team_object,
+      _this = this;
+    team_object = db.teams.findOne({}, function(err, doc) {
+      return doc;
+    });
     return res.json(team_object);
   };
 
