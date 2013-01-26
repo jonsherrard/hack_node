@@ -37,15 +37,11 @@
               error: 'DB error'
             });
           } else {
-            return res.json({
-              logged_in: true
-            });
+            return res.json(doc._id);
           }
         });
       } else {
-        return res.json({
-          loggin_in: true
-        });
+        return res.json(doc._id);
       }
     });
   };
