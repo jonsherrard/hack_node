@@ -21,6 +21,7 @@
   exports.post_login = function(req, res) {
     var search_object, team_assignment, user_object,
       _this = this;
+    console.log(req.body);
     search_object = {
       username: req.body.username
     };
