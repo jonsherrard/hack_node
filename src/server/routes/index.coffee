@@ -55,13 +55,11 @@ exports.post_login = (req, res) ->
 			when 'other'
 				console.log 'designer'
 
-	user = insert_user(req)
-	console.log 'after insert'
-	console.log user
-	console.log 'before team'
-	team_assignment(user)
+	await insert_user(req), defer result
 
-	res.json user._id
+	console.log result
+
+	res.json result
 
 
 
