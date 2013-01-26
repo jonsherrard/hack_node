@@ -40,18 +40,17 @@
                 error: 'DB error'
               });
             } else {
-              console.log(user);
               return user;
             }
           });
         } else {
-          console.log(user);
           return user;
         }
       });
     };
     team_assignment = function(user) {
       var num_teams, team_object, user_type;
+      console.log(user);
       user_type = user.type;
       switch (user_type) {
         case 'developer':

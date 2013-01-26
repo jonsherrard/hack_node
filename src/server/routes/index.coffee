@@ -29,13 +29,12 @@ exports.post_login = (req, res) ->
 						throw err
 						res.json(error: 'DB error')
 					else
-						console.log user
 						return user
 			else
-				console.log user
 				return user
 
 	team_assignment = (user) =>
+		console.log user
 		user_type = user.type
 		switch user_type
 			when 'developer'
