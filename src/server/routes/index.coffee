@@ -27,6 +27,8 @@ exports.post_login = (req, res) ->
 		else
 			res.json doc._id
 
+	console.log db.teams.count()
+
 	team_assignment = (user) =>
 		user_type = user.type
 		if user_type is 'developer'
