@@ -19,7 +19,7 @@
   };
 
   exports.post_login = function(req, res) {
-    var search_object, team_assignment, user_object,
+    var num_teams, search_object, team_assignment, user_object,
       _this = this;
     search_object = {
       username: req.body.username
@@ -36,14 +36,15 @@
         return res.json(doc._id);
       }
     });
+    num_teams = db.teams.count(function(err, num) {
+      return num;
+    });
+    console.log(num_teams);
     return team_assignment = function(user) {
-      var num_teams, user_type;
+      var user_type;
       user_type = user.type;
       if (user_type === 'developer') {
-        num_teams = db.teams.count(function(err, num) {
-          return num;
-        });
-        return console.log(num_teams);
+        return console.log('dev');
       } else if (user_type === 'other') {
         return console.log('other dude');
       } else if (user_type === 'designer') {
