@@ -37,15 +37,26 @@
       }
     });
     return team_assignment = function(user) {
-      var user_type;
+      var team_num, user_type;
       user_type = user.type;
       _this.num_teams = 0;
       if (user_type === 'developer') {
         console.log('dev');
-        return db.teams.count(function(err, num) {
-          _this.num_teams = num;
-          return console.log(_this.num_teams);
+        team_num = db.teams.count(function(err, num) {
+          return num;
         });
+        return console.log(team_num);
+        /*
+        			if nm is 1
+        				team_object = {}
+        				db.teams.insert team_object, (err, team) =>
+        					db.teams.update
+        						_id: team._id
+        					,
+        						$push:
+        							member_array: user
+        */
+
       } else if (user_type === 'other') {
         return console.log('other dude');
       } else if (user_type === 'designer') {

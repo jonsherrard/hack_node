@@ -32,9 +32,20 @@ exports.post_login = (req, res) ->
 		@num_teams = 0
 		if user_type is 'developer'
 			console.log 'dev'
-			db.teams.count (err, num) =>
-				@num_teams = num
-				console.log @num_teams
+			team_num = db.teams.count (err, num) ->
+				return num
+			console.log team_num
+			###
+			if nm is 1
+				team_object = {}
+				db.teams.insert team_object, (err, team) =>
+					db.teams.update
+						_id: team._id
+					,
+						$push:
+							member_array: user
+			###
+
 		else if user_type is 'other'
 			console.log 'other dude'
 		else if user_type is 'designer'
