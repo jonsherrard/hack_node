@@ -20,7 +20,7 @@ exports.post_login = (req, res) ->
 	db.users.update 
 		username: req.body.username
 	,	
-		$set
+		$set:
 			user: user_object
 	, upsert: true
 
