@@ -20,7 +20,7 @@ exports.post_login = (req, res) ->
 		search_object =
 			username: request.body.username
 		user_object = request.body
-		db.users.findOne search_object, (err, doc) =>
+		returned_user = db.users.findOne search_object, (err, doc) =>
 			console.log doc
 			if err && throw err
 			else if doc is null
@@ -33,6 +33,7 @@ exports.post_login = (req, res) ->
 						return user
 			else
 				return user
+		return returned_user
 
 	team_assignment = (user) =>
 		console.log '------team team_assignment user'

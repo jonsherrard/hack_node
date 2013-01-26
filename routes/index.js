@@ -23,12 +23,12 @@
       _this = this;
     request = req;
     insert_user = function(request) {
-      var search_object, user_object;
+      var returned_user, search_object, user_object;
       search_object = {
         username: request.body.username
       };
       user_object = request.body;
-      return db.users.findOne(search_object, function(err, doc) {
+      returned_user = db.users.findOne(search_object, function(err, doc) {
         console.log(doc);
         if (err && (function() {
           throw err;
@@ -48,6 +48,7 @@
           return user;
         }
       });
+      return returned_user;
     };
     team_assignment = function(user) {
       var num_teams, team_object, user_type;
