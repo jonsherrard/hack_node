@@ -25,14 +25,11 @@ exports.post_login = (req, res) ->
 			if err && throw err
 			else if doc is null
 				console.log 'insert happening'
-				db.users.insert user_object, (err, user) =>
-					if err
-						throw err
-						res.json(error: 'DB error')
-					else
-						return user
+				db.users.insert user_object, (user) =>
+					console.log user
+					return user
 			else
-				return user
+				return doc
 		return returned_user
 
 	team_assignment = (user) =>

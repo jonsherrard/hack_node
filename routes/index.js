@@ -34,18 +34,12 @@
           throw err;
         })()) {} else if (doc === null) {
           console.log('insert happening');
-          return db.users.insert(user_object, function(err, user) {
-            if (err) {
-              throw err;
-              return res.json({
-                error: 'DB error'
-              });
-            } else {
-              return user;
-            }
+          return db.users.insert(user_object, function(user) {
+            console.log(user);
+            return user;
           });
         } else {
-          return user;
+          return doc;
         }
       });
       return returned_user;
