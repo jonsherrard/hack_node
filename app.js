@@ -38,8 +38,6 @@ Module dependencies.
 
   app.post('/login', routes.post_login);
 
-  app.get("/genteam", routes.genteam);
-
   app.get("/genevent", routes.genevent);
 
   http.createServer(app).listen(app.get("port"), function() {

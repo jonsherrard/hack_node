@@ -22,7 +22,6 @@ app.configure "development", ->
 
 app.get "/", routes.index
 app.post '/login', routes.post_login
-app.get "/genteam", routes.genteam
 app.get "/genevent", routes.genevent
 http.createServer(app).listen app.get("port"), ->
 	console.log "Express listening on port " + app.get("port")
