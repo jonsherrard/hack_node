@@ -55,7 +55,7 @@ exports.post_login = (req, res) ->
 			when 'other'
 				console.log 'designer'
 
-	await insert_user(req), defer result
+	await insert_user req, defer result
 
 	console.log result
 
