@@ -37,11 +37,11 @@
               error: 'DB error'
             });
           } else {
-            return res.json(doc);
+            return res.json(doc._id);
           }
         });
       } else {
-        return res.json(doc);
+        return res.json(doc._id);
       }
     });
   };
